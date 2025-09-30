@@ -40,6 +40,8 @@ x-airflow-common: &airflow-common
   build:
     context: .
   environment: &airflow-common-env
+    AIRFLOW_UID: 0
+    AIRFLOW_GID: 0
     AIRFLOW__API__AUTH_BACKEND: 'airflow.api.auth.backend.basic_auth'
     AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: 'true'
     AIRFLOW__CORE__DEFAULT_TIMEZONE: 'America/Sao_Paulo'
@@ -104,7 +106,7 @@ services:
     container_name: airflow-webserver
     command: webserver
     ports:
-      - 8081:8080
+      - 8080:8080
     healthcheck:
       test: [ "CMD", "curl", "--fail", "http://localhost:8080/health" ]
       interval: 10s
