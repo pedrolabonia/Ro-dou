@@ -10,7 +10,7 @@ COPY dag_load_inlabs /opt/airflow/dags/ro_dou/dag_load_inlabs
 RUN chown -R airflow /opt/airflow
 
 # Install additional Airflow dependencies
-# USER airflow
+USER airflow
 
 
 COPY requirements-uninstall.txt .
