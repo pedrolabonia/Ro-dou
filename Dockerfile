@@ -1,16 +1,16 @@
 FROM apache/airflow:2.10.0-python3.10
 
-USER root
+# USER root
 
 # Copy Ro-dou core files from the host Docker context
 COPY src /opt/airflow/dags/ro_dou_src
 COPY dag_confs/examples_and_tests /opt/airflow/dags/ro_dou/dag_confs
 COPY dag_load_inlabs /opt/airflow/dags/ro_dou/dag_load_inlabs
 
-RUN chown -R airflow /opt/airflow
+# RUN chown -R airflow /opt/airflow
 
 # Install additional Airflow dependencies
-USER airflow
+# USER airflow
 
 COPY requirements-uninstall.txt .
 RUN pip uninstall -y -r requirements-uninstall.txt && \
